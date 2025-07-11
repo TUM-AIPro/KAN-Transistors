@@ -11,14 +11,14 @@ import sys
 from MultKAN import KAN
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Generate curve.')
-    parser.add_argument('-seed', type=int, default=1, help='Seed Number')
+    parser = argparse.ArgumentParser(description='Tune selected pre-trained model')
+    parser.add_argument('-seed', type=int, default=1, help='Seed number')
     parser.add_argument('-k', type=int, default=3, help='Polynomial degree for KAN')
-    parser.add_argument('-step', type=int, default=60000, help='Steps to train with')
-    parser.add_argument('-lr', type=float, default=0.0001, help='LR')
-    parser.add_argument('-data', type=str, default='qd', help='qd, qs, qg')
-    parser.add_argument('-tp', type=int, default=1, help='Train part 1,2,4,10')
-    parser.add_argument('--h2', action='store_true', help='Test bigger model with 2 hidden layers')
+    parser.add_argument('-step', type=int, default=60000, help='Steps to train with in each iteration')
+    parser.add_argument('-lr', type=float, default=0.0001, help='Learning rate')
+    parser.add_argument('-data', type=str, default='qd', help='Select charge type: qd, qs, qg')
+    parser.add_argument('-tp', type=int, default=1, help='Train part 1,2,4,10 (5mV, 10mV, 20mV, 50mV dataset correspondingly)')
+    parser.add_argument('--h2', action='store_true', help='Train bigger model with 2 hidden layers')
     args = parser.parse_args()
 
     assert args.data in ['qd', 'qs', 'qg']
